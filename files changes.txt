@@ -1,0 +1,19 @@
+1. Add the system call name in the follwoing file:
+ninad@ninad-lpc:~/ASU_DATA/Courses/EOSI/New Gallileo config and all files/CSE438-530-Gen2_2017/Boot_image&SDK/kernel$ vim arch/x86/syscalls/syscall_32.tbl 
+
+2.
+ninad@ninad-lpc:~/ASU_DATA/Courses/EOSI/New Gallileo config and all files/CSE438-530-Gen2_2017/Boot_image&SDK/kernel$ vim ./include/linux/syscalls.h
+
+
+Refer following links:
+https://williamthegrey.wordpress.com/2014/05/18/add-your-own-system-calls-to-the-linux-kernel/
+https://stackoverflow.com/questions/26720644/adding-new-system-call-to-linux-kernel-3-13-on-64-bit-system
+
+Note:
+Make sure that the path of current directory has no special characters which causes compilation error.
+
+Kernel compilation:
+1.export PATH=/opt/iot-devkit/1.7.3/sysroots/x86_64-pokysdk-linux/usr/bin/i586-poky-linux:$PATH
+2.Run Command : ARCH=x86 LOCALVERSION= CROSS_COMPILE=i586-poky-linux- make -j4
+3. Run command : ARCH=x86 LOCALVERSION= INSTALL_MOD_PATH=../galileo-install CROSS_COMPILE=i586-poky-linux- make modules_install
+4. Run Command : cp arch/x86/boot/bzImage ../galileo-install/
